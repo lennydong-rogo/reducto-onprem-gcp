@@ -16,6 +16,7 @@ module "gke" {
   enable_private_nodes      = true
   enable_intranode_visibility = true
   enable_shielded_nodes     = true
+  enable_cost_allocation    = true
   default_max_pods_per_node = 20
   remove_default_node_pool  = true
   deletion_protection       = var.deletion_protection
@@ -38,7 +39,7 @@ module "gke" {
     {
       name                = "reducto-secondary-node-pool"
       machine_type        = var.secondary_machine_type
-      min_count           = 1
+      min_count           = 0
       max_count           = 100
       local_ssd_count     = 1
       disk_size_gb        = 100
