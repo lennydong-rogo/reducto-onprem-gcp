@@ -23,8 +23,9 @@ module "gke" {
     {
       name              = "reducto-primary-node-pool"
       machine_type      = var.primary_machine_type
-      min_count         = 1
-      max_count         = 100
+      total_min_count   = 2
+      total_max_count   = 100
+      location_policy   = "BALANCED"
       local_ssd_count   = 1
       disk_size_gb      = 100
       disk_type         = "pd-ssd"
@@ -36,8 +37,9 @@ module "gke" {
     {
       name              = "reducto-secondary-node-pool"
       machine_type      = var.secondary_machine_type
-      min_count         = 0
-      max_count         = 100
+      total_min_count   = 1
+      total_max_count   = 100
+      location_policy   = "BALANCED"
       local_ssd_count   = 1
       disk_size_gb      = 100
       disk_type         = "pd-ssd"
@@ -49,8 +51,9 @@ module "gke" {
     {
       name              = "reducto-secondary-node-pool-preemptible"
       machine_type      = var.secondary_machine_type
-      min_count         = 0
-      max_count         = 100
+      total_min_count   = 0
+      total_max_count   = 100
+      location_policy   = "BALANCED"
       local_ssd_count   = 1
       disk_size_gb      = 100
       disk_type         = "pd-ssd"
