@@ -38,7 +38,9 @@ resource "helm_release" "reducto" {
   wait    = false
 
   values = [
-    "${file("values/reducto.yaml")}",
+    templatefile("${path.module}/values/reducto.yaml.tftpl", {
+      min_replica_count = var.reducto_worker_min_replica_count
+    }),
     <<-EOT
     http:
       service:

@@ -172,3 +172,9 @@ variable "extra_node_pools" {
 
   default = []
 }
+
+variable "reducto_worker_min_replica_count" {
+  description = "The minimum number of reducto workers to maintain via KEDA"
+  type = number
+  default = 5
+}
