@@ -21,7 +21,7 @@ worker:
     enabled: true
   kedaScaler: true
   scaling:
-    minReplicaCount: 5
+    minReplicaCount: ${min_replica_count}
     maxReplicaCount: 100
 
   resources:
