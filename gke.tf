@@ -1,3 +1,23 @@
+data "google_compute_zones" "available" {
+  project = var.project_id
+  region  = var.region
+  status  = "UP"
+}
+
+locals {
+  # Filter out AI zones (e.g., us-central1-ai1a) as they are reserved for AI workloads
+  # and may have different resource availability or pricing
+  available_zones = [
+    for zone in data.google_compute_zones.available.names : zone
+    if !can(regex("-ai\\d+[a-z]$", zone))
+  ]
+  zones = slice(
+    local.available_zones,
+    0,
+    min(3, length(local.available_zones))
+  )
+}
+
 # GKE Standard
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
@@ -7,6 +27,7 @@ module "gke" {
   name                      = var.cluster_name
   regional                  = true
   region                    = var.region
+  zones                     = local.zones
   network                   = module.network.network_name
   subnetwork                = var.subnet_name
   ip_range_pods             = var.pods_cidr_name
