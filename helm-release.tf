@@ -40,6 +40,7 @@ resource "helm_release" "reducto" {
   values = [
     templatefile("${path.module}/values/reducto.yaml.tftpl", {
       min_replica_count = var.reducto_worker_min_replica_count
+      max_replica_count = var.reducto_worker_max_replica_count
     }),
     var.datadog_api_key != "" ? yamlencode(local.otel_env_vars) : "",
     <<-EOT

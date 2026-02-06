@@ -179,6 +179,12 @@ variable "reducto_worker_min_replica_count" {
   default = 5
 }
 
+variable "reducto_worker_max_replica_count" {
+  description = "The maximum number of reducto workers allowed via KEDA"
+  type    = number
+  default = 100
+}
+
 # Configuration for Datadog
 
 variable "datadog_site" {

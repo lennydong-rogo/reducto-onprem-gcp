@@ -55,7 +55,6 @@ module "gke" {
       auto_upgrade       = true
       preemptible        = false
       max_pods_per_node  = 20
-      enable_secure_boot = true
     },
     {
       name               = "reducto-secondary-node-pool"
@@ -70,7 +69,6 @@ module "gke" {
       auto_upgrade       = true
       preemptible        = false
       max_pods_per_node  = 20
-      enable_secure_boot = true
     },
     {
       name               = "reducto-secondary-node-pool-preemptible"
@@ -85,7 +83,6 @@ module "gke" {
       auto_upgrade       = true
       preemptible        = true
       max_pods_per_node  = 20
-      enable_secure_boot = true
     },
   ], var.extra_node_pools)
 
