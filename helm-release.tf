@@ -43,12 +43,16 @@ resource "helm_release" "reducto" {
       max_replica_count = var.reducto_worker_max_replica_count
     }),
     var.datadog_api_key != "" ? yamlencode(local.otel_env_vars) : "",
-    <<-EOT
+    var.enable_global_access ? "" : <<-EOT
     http:
       service:
         annotations:
           cloud.google.com/backend-config: '{"ports": {"80":"${local.backend_config_name}"}}'
+    EOT
+    ,
+    <<-EOT
     ingress:
+      enabled: ${!var.enable_global_access}
       host: ${var.reducto_host}
     env:
       GCP_PROJECT_ID: ${var.project_id}
