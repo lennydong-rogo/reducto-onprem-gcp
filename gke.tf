@@ -49,7 +49,7 @@ module "gke" {
       total_min_count    = 2
       total_max_count    = 100
       location_policy    = "BALANCED"
-      local_ssd_count    = 1
+      local_ssd_count    = 0
       disk_size_gb       = 100
       disk_type          = "pd-ssd"
       auto_repair        = true
@@ -63,7 +63,7 @@ module "gke" {
       total_min_count    = 1
       total_max_count    = 100
       location_policy    = "BALANCED"
-      local_ssd_count    = 1
+      local_ssd_count    = 0
       disk_size_gb       = 100
       disk_type          = "pd-ssd"
       auto_repair        = true
@@ -77,7 +77,7 @@ module "gke" {
       total_min_count    = 0
       total_max_count    = 100
       location_policy    = "BALANCED"
-      local_ssd_count    = 1
+      local_ssd_count    = 0
       disk_size_gb       = 100
       disk_type          = "pd-ssd"
       auto_repair        = true
