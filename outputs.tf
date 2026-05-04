@@ -22,7 +22,7 @@ output "google_secret_access_key" {
 
 output "google_service_account_email" {
   description = "The GCP Service Account created for reducto"
-  value = google_service_account.service_account.email
+  value       = google_service_account.service_account.email
 }
 
 output "database_url" {

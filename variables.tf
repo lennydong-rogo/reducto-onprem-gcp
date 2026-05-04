@@ -173,16 +173,34 @@ variable "extra_node_pools" {
   default = []
 }
 
+variable "primary_node_pool_max_size" {
+  description = "Maximum total node count (across zones) for the primary node pool"
+  type        = number
+  default     = 100
+}
+
+variable "secondary_node_pool_max_size" {
+  description = "Maximum total node count (across zones) for the secondary node pool"
+  type        = number
+  default     = 100
+}
+
+variable "secondary_preemptible_node_pool_max_size" {
+  description = "Maximum total node count (across zones) for the secondary preemptible node pool"
+  type        = number
+  default     = 100
+}
+
 variable "reducto_worker_min_replica_count" {
   description = "The minimum number of reducto workers to maintain via KEDA"
-  type = number
-  default = 5
+  type        = number
+  default     = 5
 }
 
 variable "reducto_worker_max_replica_count" {
   description = "The maximum number of reducto workers allowed via KEDA"
-  type    = number
-  default = 100
+  type        = number
+  default     = 100
 }
 
 # Configuration for Datadog

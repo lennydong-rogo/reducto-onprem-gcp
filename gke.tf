@@ -44,46 +44,46 @@ module "gke" {
 
   node_pools = concat([
     {
-      name               = "reducto-primary-node-pool"
-      machine_type       = var.primary_machine_type
-      total_min_count    = 2
-      total_max_count    = 100
-      location_policy    = "BALANCED"
-      local_ssd_count    = 0
-      disk_size_gb       = 100
-      disk_type          = "pd-ssd"
-      auto_repair        = true
-      auto_upgrade       = true
-      preemptible        = false
-      max_pods_per_node  = 20
+      name              = "reducto-primary-node-pool"
+      machine_type      = var.primary_machine_type
+      total_min_count   = 2
+      total_max_count   = var.primary_node_pool_max_size
+      location_policy   = "BALANCED"
+      local_ssd_count   = 0
+      disk_size_gb      = 100
+      disk_type         = "pd-ssd"
+      auto_repair       = true
+      auto_upgrade      = true
+      preemptible       = false
+      max_pods_per_node = 20
     },
     {
-      name               = "reducto-secondary-node-pool"
-      machine_type       = var.secondary_machine_type
-      total_min_count    = 1
-      total_max_count    = 100
-      location_policy    = "BALANCED"
-      local_ssd_count    = 0
-      disk_size_gb       = 100
-      disk_type          = "pd-ssd"
-      auto_repair        = true
-      auto_upgrade       = true
-      preemptible        = false
-      max_pods_per_node  = 20
+      name              = "reducto-secondary-node-pool"
+      machine_type      = var.secondary_machine_type
+      total_min_count   = 1
+      total_max_count   = var.secondary_node_pool_max_size
+      location_policy   = "BALANCED"
+      local_ssd_count   = 0
+      disk_size_gb      = 100
+      disk_type         = "pd-ssd"
+      auto_repair       = true
+      auto_upgrade      = true
+      preemptible       = false
+      max_pods_per_node = 20
     },
     {
-      name               = "reducto-secondary-node-pool-preemptible"
-      machine_type       = var.secondary_machine_type
-      total_min_count    = 0
-      total_max_count    = 100
-      location_policy    = "BALANCED"
-      local_ssd_count    = 0
-      disk_size_gb       = 100
-      disk_type          = "pd-ssd"
-      auto_repair        = true
-      auto_upgrade       = true
-      preemptible        = true
-      max_pods_per_node  = 20
+      name              = "reducto-secondary-node-pool-preemptible"
+      machine_type      = var.secondary_machine_type
+      total_min_count   = 0
+      total_max_count   = var.secondary_preemptible_node_pool_max_size
+      location_policy   = "BALANCED"
+      local_ssd_count   = 0
+      disk_size_gb      = 100
+      disk_type         = "pd-ssd"
+      auto_repair       = true
+      auto_upgrade      = true
+      preemptible       = true
+      max_pods_per_node = 20
     },
   ], var.extra_node_pools)
 
