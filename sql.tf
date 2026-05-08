@@ -15,7 +15,7 @@ resource "random_string" "db_name_suffix" {
 
 module "pg" {
   source  = "terraform-google-modules/sql-db/google//modules/postgresql"
-  version = "~> 26.0"
+  version = "~> 27.0"
 
   name                 = "reducto-db-${random_string.db_name_suffix.result}"
   random_instance_name = false

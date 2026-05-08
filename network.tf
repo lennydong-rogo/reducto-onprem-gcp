@@ -55,7 +55,7 @@ module "cloud-nat" {
 
 module "private_service_access" {
   source  = "terraform-google-modules/sql-db/google//modules/private_service_access"
-  version = "~> 26.1"
+  version = "~> 27.0"
 
   project_id  = var.project_id
   vpc_network = module.network.network_name
